@@ -9,10 +9,10 @@
 
         <div id="dish-description-view" class="col-md-9 col-xs-6 dinner-column p-0">
             <div class="col-md-6 p-25">
-                <h3 class='m-t-0 text-center description-title'>&nbsp;</h3>
+                <h3 class='m-t-0 text-center description-title'>{{dishStatus === undefined ? dish.title : dishStatus}}</h3>
                 <div class="row">
                     <div class='img-wrapper col-md-8 col-md-offset-2'>
-                        <img class='f-w description-image' src='images/meatballs.jpg'>
+                        <img class='f-w description-image' ng-src="{{dish.image}}">
                     </div>
                 </div>
                 <div class="row m-t-15">
@@ -20,24 +20,29 @@
                 </div>
                 <div class="row m-t-15">
                     <div class="col-md-5">
-                        <button id="back-to-select-dish-button" class="btn btn-default f-w">Back to select dish</button>
+                        <a ng-href="#!/search" class="btn btn-default f-w">Back to select dish</a>
                     </div>
                 </div>
                 <h3 class='text-center'>Preparation</h3>
-                <p class="text-center description-preparation-text"></p>
+                <p class="text-center description-preparation-text">{{dish.instructions}}</p>
             </div>
             <div class="col-md-6 p-25 ingredients-column">
-                <h3 class="m-t-0 description-ingredients-title">&nbsp;</h3>
+                <h3 class="m-t-0 description-ingredients-title">Ingredients for {{dinnerService.getNumberOfGuests()}} people</h3>
                 <hr />
                 <ul class="p-0 description-ingredients-list">
-
+                    <li ng-repeat="ingredient in dish.extendedIngredients" class='row'>
+                        <div class='col-md-2'>{{(ingredient.amount * dinnerService.getNumberOfGuests()).toFixed(1)}} {{ingredient.unit}}</div>
+                        <div class='col-md-6'>{{ingredient.name}}</div>
+                        <div class='col-md-2'>N/A</div>
+                        <div class='col-md-2'>SEK</div>
+                    </li>
                 </ul>
                 <hr />
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default f-w description-confirm-dish-button">Confirm dish</button>
+                        <button ng-click="addDishToMenu(dish)" class="btn btn-default f-w">Confirm dish</button>
                     </div>
-                    <div class="col-md-2 col-md-offset-4 description-dish-price">&nbsp;</div>
+                    <div class="col-md-2 col-md-offset-4 description-dish-price">{{(dish.pricePerServing * dinnerService.getNumberOfGuests()).toFixed(1)}}</div>
                     <div class="col-md-2">SEK</div>
                 </div>
             </div>

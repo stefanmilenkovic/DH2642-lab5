@@ -6,13 +6,13 @@
                 <label class="control-label col-sm-3" for="number-of-guests">People:</label>
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" id="decrement-button">
+                        <button ng-click="dinnerService.decrementNumberOfGuests()" type="button" class="btn btn-default">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </span>
-                    <input type="text" id="number-of-guests" disabled class="form-control input-number" value="1">
+                    <input ng-model="dinnerService.numberOfGuests" type="text" id="number-of-guests" disabled class="form-control input-number">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" id="increment-button">
+                        <button ng-click="dinnerService.incrementNumberOfGuests()" type="button" class="btn btn-default">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </span>
@@ -26,15 +26,23 @@
         <div class="col-md-4 text-left">Cost</div>
     </div>
     <ul class="chosen-dishes-list p-0">
-        <li class="row chosen-dishes-row">
+        <li ng-if="dinnerService.getFullMenu().length == 0" class="row chosen-dishes-row">
             <div class="col-md-1 text-left p-l-30">0</div>
             <div class="col-md-6 text-left">Pending</div>
             <div class="col-md-3 text-left">0 SEK</div>
         </li>
+        <li ng-repeat="dishInMenu in dinnerService.getFullMenu()" class="row chosen-dishes-row">
+            <div class='col-md-1 text-left p-l-30'>{{dinnerService.getNumberOfGuests()}}</div>
+            <div class='col-md-6 text-left'>{{dishInMenu.title}}</div>
+            <div class='col-md-3 text-left'>{{dinnerService.getDishesPrice(dishInMenu)}} SEK</div>
+            <div class='col-md-1 text-left p-0'>
+                <button ng-click="dinnerService.removeDishFromMenu(dishInMenu.id)" type='button' class='btn btn-xs btn-default remove-dish-from-menu-button'>x</button>
+            </div>
+        </li>
     </ul>
     <hr>
     <div class="row total-price-row">
-        <div class="col-md-5 col-md-offset-7 text-left total-price-text p-l-30">0 SEK</div>
+        <div class="col-md-5 col-md-offset-7 text-left total-price-text p-l-30">{{(dinnerService.getTotalMenuPrice()).toFixed(1)}} SEK</div>
     </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3 m-t-15">

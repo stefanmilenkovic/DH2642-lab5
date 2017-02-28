@@ -11,17 +11,17 @@
             <div class="col-md-12 search-row p-25">
                 <h3 class="m-t-0">Select dish</h3>
                 <hr />
-                <form class="form-horizontal dish-search-form" onsubmit="return false;">
+                <form ng-submit="search(query, type)" class="form-horizontal dish-search-form" onsubmit="return false;">
                     <div class="col-md-4 col-xs-6">
                         <div class="input-group">
-                            <input id="dish-search-key-words" type="text" class="form-control" placeholder="Enter key words">
+                            <input ng-model="query" type="text" class="form-control" placeholder="Enter key words">
                             <span class="input-group-btn">
-                                        <button id="dish-search-button" class="btn btn-default" type="button">Search</button>
-                                    </span>
+                                <button ng-click="search(query, type)" id="dish-search-button" class="btn btn-default" type="button">Search</button>
+                            </span>
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-6">
-                        <select id="dish-search-type" class="form-control" id="sel1">
+                        <select ng-model="type" name="dishType" ng-change="search(query, type)" id="dish-search-type" class="form-control" id="sel1">
                             <option value="all">all</option>
                             <option value="appetizer">appetizer</option>
                             <option value="main course">main course</option>
@@ -30,7 +30,23 @@
                     </div>
                 </form>
             </div>
-            <ul id="dish-list-box" class="col-md-12 dish-list-row p-25">
+            <div class="col-md-12 m-t-15">{{status}}</div>
+            <ul id="dish-list-box" class="col-md-12 dish-list-row p-25 p-t-15">
+                <li ng-repeat="dish in dishes" class='col-md-2 col-xs-4 pull-left p-5 m-b-15 dish-box'>
+                    <a ng-href="#!/dish/{{dish.id}}" class="styless-link"><div class='img-wrapper center-block dish-box-click' id='dish-box-"+dishes[dishIndex].id+"'>
+                        <img class='f-w' ng-src="https://spoonacular.com/recipeImages/{{dish.image}}">
+                        <div class='img-title text-center'>{{dish.title}}</div>
+                        </div>
+                    </a>
+                </li>
+                <!--<ul>
+                    <li >
+                        <img ng-src="https://spoonacular.com/recipeImages/{{dish.image}}"/>
+                        {{dish.title}}
+                        <a ng-href="#!/dish/{{dish.id}}">View more</a>
+                        Dish ready in {{dish.readyInMinutes}} minutes
+                    </li>
+                </ul>-->
             </ul>
         </div>
     </div>
