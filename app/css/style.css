@@ -1,0 +1,340 @@
+.header-image {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: url('../images/background1.jpg') no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.top-bar{
+    padding: 20px 0;
+}
+
+.top-bar.top-bar-yellow{
+    background-color:rgba(212, 214, 130, 0.6);
+}
+.top-bar.top-bar-gray{
+    background-color:rgba(168, 173, 175, 0.4);
+}
+
+.top-bar h1 {
+    font-size: 45px;
+    margin:0;
+    line-height:50px;
+}
+
+.top-bar h4 {
+    font-size: 25px;
+    margin: 0;
+    line-height:50px;
+}
+
+/* Headline on start page*/
+.headline-box {
+    min-height:700px;
+}
+
+.headline-box .headline-content-box{
+    margin-top:200px;
+    background-color:rgba(255, 255, 255, 0.6);
+    padding: 20px 30px;
+}
+
+.headline-box hr{
+    border-top-color: rgb(45,45,45);
+}
+
+.headline-box h1 {
+    font-size: 32px;
+    margin:10px;
+}
+
+.headline-box p {
+    font-size: 16px;
+}
+/* End of Headline on start page*/
+
+.view-element{
+    min-height:700px;
+}
+
+.dinner-row{
+    max-height:800px;
+    overflow: auto;
+}
+
+.dinner-row{
+    border-top: 2px solid rgb(0, 0, 0);
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+.dinner-column{
+    min-height:600px;
+}
+
+.dinner-column-status{
+    border-right: 2px solid rgb(0, 0, 0);
+}
+
+.dinner-column-status .header-row{
+    border-top: 2px solid rgb(0, 0, 0);
+    border-bottom: 2px solid rgb(0, 0, 0);
+    background-color:rgba(168, 173, 175, 0.4);
+}
+
+.dinner-column-status .chosen-dishes-list{
+    list-style: none;
+}
+
+.dinner-column-status .chosen-dishes-row{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.dinner-column-status .chosen-dishes-row:hover{
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.dinner-column-status hr{
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+/* dishes list */
+.dinner-column .search-row{
+    background-color:rgba(212, 214, 130, 0.6);
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+.dinner-column .dish-list-row{
+    overflow: auto;
+}
+
+.dinner-column .dish-list-row .dish-box{
+    list-style: none;
+    min-height:350px;
+}
+
+.dinner-column .dish-list-row .dish-box .img-wrapper{
+    border: 2px solid rgb(0, 0, 0);
+    min-height:200px;
+
+}
+
+.dinner-column .dish-list-row .dish-box .img-wrapper img{
+    width: 100%; /* or any custom size */
+    height: 100%;
+    object-fit: contain;
+}
+
+.dinner-column .dish-list-row .dish-box .img-title{
+    font-size:1.2em;
+    background-color:rgba(168, 173, 175, 0.4);
+}
+
+.dinner-column .dish-list-row .dish-box .dish-description{
+    font-size:1em;
+    height:90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6; /* number of lines to show */
+    line-height: 15px;        /* fallback */
+}
+
+
+/* Dish description */
+#dish-description-view .img-wrapper img{
+    max-height:300px;
+}
+
+#dish-description-view .ingredients-column{
+    background-color:rgba(212, 214, 130, 0.6);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+#dish-description-view .ingredients-column ul{
+    list-style: none;
+}
+
+/* Dish overview */
+#dinner-overview-view .overview-header-row{
+    background-color:rgba(212, 214, 130, 0.6);
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+#dinner-overview-view .overview-dishes{
+    border-right: 2px solid rgb(0, 0, 0);
+}
+
+#dinner-overview-view .overview-dishes ul{
+    list-style: none;
+}
+
+#dinner-overview-view .overview-dishes .img-wrapper{
+    border: 2px solid rgb(0, 0, 0);
+    min-height:200px;
+}
+
+#dinner-overview-view .overview-dishes .img-wrapper img{
+    width: 100%; /* or any custom size */
+    height: 100%;
+    object-fit: contain;
+}
+
+#dinner-overview-view .overview-dishes .img-title{
+    font-size:1.2em;
+    background-color:rgba(168, 173, 175, 0.4);
+}
+
+#dinner-overview-view .overview-dishes .dish-price-text{
+    font-size:1.2em;
+}
+
+#dinner-overview-view .dish-price-sum{
+    font-size:1.2em;
+}
+
+#dinner-overview-view .overview-button-row{
+    border-top: 2px solid rgb(0, 0, 0);
+}
+
+
+/* Full recipe*/
+#dinner-full-recipe-view .full-recipe-list{
+    list-style: none;
+}
+
+#dinner-full-recipe-view .overview-header-row{
+    background-color:rgba(212, 214, 130, 0.6);
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+#dinner-full-recipe-view .img-wrapper{
+    border: 2px solid rgb(0, 0, 0);
+    min-height:200px;
+}
+
+#dinner-full-recipe-view .img-wrapper img{
+    width: 100%; /* or any custom size */
+    height: 100%;
+    object-fit: contain;
+}
+
+#dinner-full-recipe-view .full-recipe-ingredients-list{
+    list-style: none;
+}
+
+
+.p-25{
+    padding: 25px;
+}
+
+.p-0{
+    padding: 0px;
+}
+
+.p-5{
+    padding: 5px;
+}
+
+.p-5{
+    padding: 10px;
+}
+.p-t-300{
+    padding-top:300px;
+}
+
+.m-t-0{
+    margin-top:0px;
+}
+
+.m-t-15{
+    margin-top:15px;
+}
+
+.m-b-15{
+    margin-bottom:15px;
+}
+
+.m-b-30{
+    margin-bottom:30px;
+}
+
+.p-l-10{
+    padding-left:10px;
+}
+.p-l-20{
+    padding-left:20px;
+}
+.p-l-30{
+    padding-left:30px;
+}
+
+.f-w{
+    width:100%;
+}
+
+select{
+    min-width:100px;
+}
+
+hr{
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+.clickable{
+    cursor:pointer;
+}
+
+.btn-default{
+    background-color: rgb(198, 151, 49);
+    border-color: rgb(45, 45, 45);
+}
+.btn-default:hover,
+.btn-default:active,
+.btn-default:visited,
+.btn-default:focus {
+    background-color: rgb(214, 159, 64);
+    border-color: rgb(45, 45, 45);
+}
+
+
+footer {
+    margin: 50px 0;
+}
+
+@media(max-width:1200px) {
+
+}
+
+@media(max-width:640px) {
+    .top-bar h1 {
+        font-size: 24px;
+        margin:0;
+        line-height:26px;
+        text-align:center;
+    }
+
+    .top-bar h4 {
+        font-size: 18px;
+        margin: 0;
+        line-height:26px;
+        text-align:center;
+    }
+
+    .headline-box {
+        padding: 75px 0 25px 0;
+    }
+
+    .headline-box h1 {
+        font-size: 60px;
+    }
+
+    .headline-box h2 {
+        font-size: 30px;
+    }
+}
