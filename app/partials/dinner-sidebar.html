@@ -1,9 +1,53 @@
-People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+<div class="col-md-3 col-xs-6 dinner-column dinner-column-status">
+    <div class="row p-25 dinner-name-row">
+        <form class="form-horizontal">
+            <h3 class="m-t-0">My Dinner</h3>
+            <div class="form-group form-inline">
+                <label class="control-label col-sm-3" for="number-of-guests">People:</label>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" id="decrement-button">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </span>
+                    <input type="text" id="number-of-guests" disabled class="form-control input-number" value="1">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" id="increment-button">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row header-row">
+        <div class="col-md-1 text-left p-l-30">&nbsp;</div>
+        <div class="col-md-6 text-left">Dish Name</div>
+        <div class="col-md-4 text-left">Cost</div>
+    </div>
+    <ul class="chosen-dishes-list p-0">
+        <li class="row chosen-dishes-row">
+            <div class="col-md-1 text-left p-l-30">0</div>
+            <div class="col-md-6 text-left">Pending</div>
+            <div class="col-md-3 text-left">0 SEK</div>
+        </li>
+    </ul>
+    <hr>
+    <div class="row total-price-row">
+        <div class="col-md-5 col-md-offset-7 text-left total-price-text p-l-30">0 SEK</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 m-t-15">
+            <button id="confirm-dinner-button" class="btn btn-default f-w">Confirm dinner</button>
+        </div>
+    </div>
+</div>
 
-<!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 
 
-<!-- Displaying number of guests both in input box and here is redundant. It is here only for the example
-purpose so you can see how some information from the model can be retrieved. In Lab 5 you will replace 
-this with Total price of the menu -->
+<!--People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+
+
 Total number of guest: {{getNumberOfGuests()}}
+
+-->

@@ -1,5 +1,59 @@
-<!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+<div class="container-fluid">
 
-<!-- TODO in Lab 5: Display the dish information including image, Description, 
-Instructions, Ingredients and total cost. -->
+    <ng-include src="'partials/dinner-header.html'"></ng-include>
+
+    <div class="row dinner-row">
+
+        <!-- We include the sidebar as it is shared across two screens. -->
+        <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+
+        <div id="dish-description-view" class="col-md-9 col-xs-6 dinner-column p-0">
+            <div class="col-md-6 p-25">
+                <h3 class='m-t-0 text-center description-title'>&nbsp;</h3>
+                <div class="row">
+                    <div class='img-wrapper col-md-8 col-md-offset-2'>
+                        <img class='f-w description-image' src='images/meatballs.jpg'>
+                    </div>
+                </div>
+                <div class="row m-t-15">
+                    <p class="text-center description-text">&nbsp;</p>
+                </div>
+                <div class="row m-t-15">
+                    <div class="col-md-5">
+                        <button id="back-to-select-dish-button" class="btn btn-default f-w">Back to select dish</button>
+                    </div>
+                </div>
+                <h3 class='text-center'>Preparation</h3>
+                <p class="text-center description-preparation-text"></p>
+            </div>
+            <div class="col-md-6 p-25 ingredients-column">
+                <h3 class="m-t-0 description-ingredients-title">&nbsp;</h3>
+                <hr />
+                <ul class="p-0 description-ingredients-list">
+
+                </ul>
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default f-w description-confirm-dish-button">Confirm dish</button>
+                    </div>
+                    <div class="col-md-2 col-md-offset-4 description-dish-price">&nbsp;</div>
+                    <div class="col-md-2">SEK</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <footer>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p>Copyright © Stefan Milenkovic & Joaquín Sánchez-Valiente 2017</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
+not support it in free version) and list all the dishes that match the search. -->

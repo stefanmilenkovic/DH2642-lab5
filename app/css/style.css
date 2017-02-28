@@ -290,6 +290,13 @@ hr{
     cursor:pointer;
 }
 
+.styless-link, .styless-link:focus, .styless-link:hover {
+    text-decoration: none;
+    color:inherit;
+}
+
+
+
 .btn-default{
     background-color: rgb(198, 151, 49);
     border-color: rgb(45, 45, 45);

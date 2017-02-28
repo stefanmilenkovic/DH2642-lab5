@@ -1,5 +1,50 @@
-<!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+<div id="dinner-view" class="container-fluid">
+
+    <ng-include src="'partials/dinner-header.html'"></ng-include>
+
+    <div class="row dinner-row">
+
+        <!-- We include the sidebar as it is shared across two screens. -->
+        <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+
+        <div id="dish-list-view" class="col-md-9 col-xs-6 dinner-column p-0">
+            <div class="col-md-12 search-row p-25">
+                <h3 class="m-t-0">Select dish</h3>
+                <hr />
+                <form class="form-horizontal dish-search-form" onsubmit="return false;">
+                    <div class="col-md-4 col-xs-6">
+                        <div class="input-group">
+                            <input id="dish-search-key-words" type="text" class="form-control" placeholder="Enter key words">
+                            <span class="input-group-btn">
+                                        <button id="dish-search-button" class="btn btn-default" type="button">Search</button>
+                                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                        <select id="dish-search-type" class="form-control" id="sel1">
+                            <option value="all">all</option>
+                            <option value="appetizer">appetizer</option>
+                            <option value="main course">main course</option>
+                            <option value="dessert">dessert</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <ul id="dish-list-box" class="col-md-12 dish-list-row p-25">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <footer>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p>Copyright © Stefan Milenkovic & Joaquín Sánchez-Valiente 2017</p>
+            </div>
+        </div>
+    </footer>
+</div>
 
 <!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
 not support it in free version) and list all the dishes that match the search. -->
