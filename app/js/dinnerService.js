@@ -7,17 +7,9 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
     this.numberOfGuests = $cookieStore.get('numberOfGuests') === undefined ? 2 : $cookieStore.get('numberOfGuests');
     this.currentView = 1;
-    this.currentDishId = -1;
-    this.currentDish = -1;
-    this.dishFilterKeywords = "";
-    this.dishFilterType = "";
     this.dishesInMenu = [];
 
     this.dishes = [];
-
-    this.loadedDishes = [];
-    this.dishListPageSize = 100;
-    this.currentDishListIndex = 0;
 
     this.setDishes = function(dishes) {
         this.dishes = dishes;
@@ -33,11 +25,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
     this.getNumberOfGuests = function() {
         return numberOfGuest;
-    };
-
-    this.setCurrentView = function (newCurrentView) {
-        this.currentView = newCurrentView;
-        this.viewChanged.notify(this.currentView);
     };
 
     this.incrementNumberOfGuests = function(){
