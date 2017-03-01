@@ -42,7 +42,7 @@
                     <div class="col-md-4">
                         <button ng-click="addDishToMenu(dish)" class="btn btn-default f-w">Confirm dish</button>
                     </div>
-                    <div class="col-md-2 col-md-offset-4 description-dish-price">{{(dish.pricePerServing * dinnerService.getNumberOfGuests()).toFixed(1)}}</div>
+                    <div class="col-md-2 col-md-offset-4 description-dish-price">{{(dish.pricePerServing * dinnerService.getNumberOfGuests()).toFixed(2)}}</div>
                     <div class="col-md-2">SEK</div>
                 </div>
             </div>
