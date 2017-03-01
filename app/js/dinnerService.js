@@ -3,9 +3,9 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner', function ($resource) {
+dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
-    this.numberOfGuests = 2;
+    this.numberOfGuests = $cookieStore.get('numberOfGuests') === undefined ? 2 : $cookieStore.get('numberOfGuests');
     this.currentView = 1;
     this.currentDishId = -1;
     this.currentDish = -1;
@@ -35,44 +35,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
         return numberOfGuest;
     };
 
-    this.resetDishList = function () {
-        this.loadedDishes = [];
-        this.dishListPageSize = 100;
-        this.currentDishListIndex = 0;
-    };
-
-    this.setDishFilterKeywords = function(newDishFilterKeywords){
-        this.dishFilterKeywords = newDishFilterKeywords;
-    };
-
-    this.getDishFilterKeywords = function(){
-        return this.dishFilterKeywords;
-    };
-
-    this.setDishFilterType = function(newDishFilterType){
-        this.dishFilterType = newDishFilterType;
-    };
-
-    this.getDishFilterType = function(){
-        return this.dishFilterType;
-    };
-
-    this.setCurrentDish = function(dish){
-        this.currentDish = dish;
-    };
-
-    this.getCurrentDish = function(){
-        return this.currentDish;
-    };
-
-    this.setCurrentDishId = function (newCurrentDishId) {
-        this.currentDishId = newCurrentDishId;
-    };
-
-    this.getCurrentDishId = function(){
-        return this.currentDishId;
-    };
-
     this.setCurrentView = function (newCurrentView) {
         this.currentView = newCurrentView;
         this.viewChanged.notify(this.currentView);
@@ -80,6 +42,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
 
     this.incrementNumberOfGuests = function(){
         this.numberOfGuests += 1;
+        $cookieStore.put('numberOfGuests', this.numberOfGuests);
     };
 
     this.decrementNumberOfGuests = function(){
@@ -87,6 +50,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
         if(this.numberOfGuests == 0){
             this.numberOfGuests = 1;
         }
+        $cookieStore.put('numberOfGuests', this.numberOfGuests);
     };
 
     this.setNumberOfGuests = function(num) {
