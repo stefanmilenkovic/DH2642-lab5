@@ -1,4 +1,4 @@
-// Here we create an Angular service that we will use for our 
+// Here we create an Angular service that we will use for our
 // model. In your controllers (or other services) you can include the
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
@@ -124,7 +124,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
     };
 
     this.getDishesPrice = function(dish){
-        return dish.pricePerServing * this.getNumberOfGuests();
+        return (dish.pricePerServing * this.getNumberOfGuests()).toFixed(2);
     };
 
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu
