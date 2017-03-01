@@ -1,0 +1,61 @@
+<div id="dinner-view" class="container-fluid" ng-controller="DinnerCtrl">
+
+    <ng-include src="'partials/dinner-header.html'"></ng-include>
+
+    <div class="row dinner-row">
+
+        <div id="dinner-full-recipe-view" class="col-md-12 col-xs-12 p-0" ng-controller="FullRecipeCtrl">
+            <div class="col-md-12 overview-header-row p-25">
+                <div class="col-md-5 col-md-offset-1">
+                    <h3 class="m-t-0 text-center overview-header-text">My dinner: {{dinnerService.getNumberOfGuests()}} people</h3>
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <a ng-href="#!/search" class="btn btn-default f-w">Go back and edit dinner</a>
+                </div>
+            </div>
+            <ul class="col-md-12 full-recipe-list p-25">
+                <li ng-repeat="dishInMenu in dinnerService.getFullMenu()" class='row dish-recipe-row m-b-30'>
+                    <div class='col-md-2 text-left p-l-30'>
+                        <div class='img-wrapper center-block dish-box-click'>
+                            <img class='f-w' ng-src="{{dishInMenu.image}}">
+                        </div>
+                    </div>
+                    <div class='col-md-4 text-left p-l-30'>
+                        <h3 class='m-t-0 text-left overview-header-text'>{{dishInMenu.title}}</h3>
+                        </div>
+                    <div class='col-md-6 text-left p-l-30'>
+                        <h4 class='m-t-0 text-left overview-header-text'>Preparation</h4>
+                        <p class='m-t-0 text-left overview-header-text'>{{dishInMenu.instructions}}</p>
+                    </div>
+                </li>
+            </ul>
+            <div class="col-md-6 col-md-offset-3 p-25 ingredients-column">
+                <h3 class="m-t-0 full-recipe-ingredients-title text-center">Ingredients for {{dinnerService.getNumberOfGuests()}} people</h3>
+                <hr />
+                <ul class="p-0 full-recipe-ingredients-list">
+                    <li ng-repeat="ingredientInMenu in allIngredients" class='row'>
+                        <div class='col-md-2'>{{(ingredientInMenu.amount * dinnerService.getNumberOfGuests()).toFixed(1)}} {{ingredientInMenu.unit}}</div>
+                        <div class='col-md-6'>{{ingredientInMenu.name}}</div>
+                        <div class='col-md-2'>N/A</div>
+                        <div class='col-md-2'>SEK</div>
+                    </li>
+                </ul>
+                <hr />
+                <h3 class="m-t-0 full-recipe-ingredients-total-price text-center">Total price for: {{dinnerService.getNumberOfGuests()}} people: {{dinnerService.getTotalMenuPrice()}} SEK</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <footer>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p>Copyright © Stefan Milenkovic & Joaquín Sánchez-Valiente 2017</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
+not support it in free version) and list all the dishes that match the search. -->

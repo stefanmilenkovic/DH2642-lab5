@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-12 m-t-15">{{status}}</div>
             <ul id="dish-list-box" class="col-md-12 dish-list-row p-25 p-t-15">
-                <li ng-repeat="dish in dishes" class='col-md-2 col-xs-4 pull-left p-5 m-b-15 dish-box'>
+                <li ng-repeat="dish in dinnerService.getDishes()" class='col-md-2 col-xs-4 pull-left p-5 m-b-15 dish-box'>
                     <a ng-href="#!/dish/{{dish.id}}" class="styless-link"><div class='img-wrapper center-block dish-box-click' id='dish-box-"+dishes[dishIndex].id+"'>
                         <img class='f-w' ng-src="https://spoonacular.com/recipeImages/{{dish.image}}">
                         <div class='img-title text-center'>{{dish.title}}</div>

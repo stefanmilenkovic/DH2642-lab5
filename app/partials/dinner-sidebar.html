@@ -42,11 +42,11 @@
     </ul>
     <hr>
     <div class="row total-price-row">
-        <div class="col-md-5 col-md-offset-7 text-left total-price-text p-l-30">{{(dinnerService.getTotalMenuPrice()).toFixed(1)}} SEK</div>
+        <div class="col-md-5 col-md-offset-7 text-left total-price-text p-l-30">{{dinnerService.getTotalMenuPrice()}} SEK</div>
     </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3 m-t-15">
-            <button id="confirm-dinner-button" class="btn btn-default f-w">Confirm dinner</button>
+            <a ng-href="#!/overview" class="btn btn-default f-w">Confirm dinner</a>
         </div>
     </div>
 </div>

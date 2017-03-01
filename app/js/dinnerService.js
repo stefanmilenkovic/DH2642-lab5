@@ -13,9 +13,19 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
     this.dishFilterType = "";
     this.dishesInMenu = [];
 
+    this.dishes = [];
+
     this.loadedDishes = [];
     this.dishListPageSize = 100;
     this.currentDishListIndex = 0;
+
+    this.setDishes = function(dishes) {
+        this.dishes = dishes;
+    };
+
+    this.getDishes = function() {
+        return this.dishes;
+    };
 
     this.setNumberOfGuests = function(num) {
         this.numberOfGuest = num;
@@ -93,27 +103,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
         return this.dishesInMenu;
     };
 
-    //Returns all ingredients for all the dishes on the menu.
-    this.getAllIngredients = function() {
-        var ingredientsMap = {};
-        for (dishIndex in this.dishesInMenu) {
-            for (ingredientIndex in this.dishesInMenu[dishIndex].extendedIngredients) {
-                var ingredient = this.cloneObject(this.dishesInMenu[dishIndex].extendedIngredients[ingredientIndex]);
-                console.log("Ingredient: "+JSON.stringify(ingredient));
-
-                var ingredientInMap = ingredientsMap[ingredient.id];
-                if(ingredientInMap !== undefined){
-                    ingredientsMap[ingredient.id].amount = ingredientInMap.amount + ingredient.amount;
-                    //ingredientsMap[ingredient.id].price = ingredientInMap.price + ingredient.price;
-                }
-                else{
-                    ingredientsMap[ingredient.id] = ingredient;
-                }
-            }
-        }
-        return ingredientsMap;
-    };
-
     //Returns the total price of the menu (all the ingredients multiplied by number of guests).
     this.getTotalMenuPrice = function() {
         var totalPrice = 0;
@@ -124,7 +113,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
     };
 
     this.getDishesPrice = function(dish){
-        return (dish.pricePerServing * this.getNumberOfGuests()).toFixed(2);
+        return parseFloat((dish.pricePerServing * this.getNumberOfGuests()).toFixed(2));
     };
 
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu
