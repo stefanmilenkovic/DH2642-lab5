@@ -78,7 +78,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
         console.log("Menu now: "+JSON.stringify(this.dishesInMenu));
     };
 
-
+    //Updates the cookie with current dishes (ids) in the menu
     this.updateCookieStoreWithDishesInMenu = function () {
         var dishesInMenuIds = undefined;
         if(this.dishesInMenu.length > 0){
@@ -116,10 +116,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
         this.updateCookieStoreWithDishesInMenu();
     };
 
-
-    this.cloneObject = function(object){
-        return JSON.parse(JSON.stringify(object));
-    };
 
     this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
         get: {

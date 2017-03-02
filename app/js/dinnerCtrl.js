@@ -27,7 +27,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
                     console.log("Retrieved: "+JSON.stringify(data));
                     $scope.dinnerService.addDishToMenu(data);
                 },function(data){
-                    alert("There was an error");
+                    alert("There was an error when loading dish from cookie");
                 });
             });
         }
