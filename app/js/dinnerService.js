@@ -117,11 +117,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
         this.updateCookieStoreWithDishesInMenu();
     };
 
-
-    this.cloneObject = function(object){
-        return JSON.parse(JSON.stringify(object));
-    };
-
     this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
         get: {
             headers: {
