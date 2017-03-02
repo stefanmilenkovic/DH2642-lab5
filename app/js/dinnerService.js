@@ -6,8 +6,8 @@
 dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
     this.numberOfGuests = $cookieStore.get('numberOfGuests') === undefined ? 2 : $cookieStore.get('numberOfGuests');
-    this.currentView = 1;
     this.dishesInMenu = [];
+    this.dishesInMenuIds = [];
 
     this.dishes = [];
 
@@ -60,7 +60,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
         for (dishIndex in this.dishesInMenu) {
             totalPrice += this.getDishesPrice(this.dishesInMenu[dishIndex]);
         }
-        return totalPrice;
+        return totalPrice.toFixed(2);
     };
 
     this.getDishesPrice = function(dish){
@@ -73,9 +73,27 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
         //Add only if dish not already in the menu
         if(this.getDishFromMenu(dish.id) === undefined){
             this.dishesInMenu.push(dish);
+            this.updateCookieStoreWithDishesInMenu();
         }
         console.log("Menu now: "+JSON.stringify(this.dishesInMenu));
     };
+
+
+    this.updateCookieStoreWithDishesInMenu = function () {
+        var dishesInMenuIds = undefined;
+        if(this.dishesInMenu.length > 0){
+            dishesInMenuIds = [];
+            for (dishIndex in this.dishesInMenu) {
+                dishesInMenuIds.push(this.dishesInMenu[dishIndex].id);
+            }
+        }
+        $cookieStore.put('dishesInMenuIds', dishesInMenuIds);
+    };
+
+    this.getDishesInMenuIdsFromCookieStore = function(){
+        return $cookieStore.get('dishesInMenuIds');
+    }
+
 
     this.getDishFromMenu = function(id){
         for(key in this.dishesInMenu){
@@ -95,6 +113,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
             }
         }
         this.dishesInMenu.splice(foundDishIndex, 1);
+        this.updateCookieStoreWithDishesInMenu();
     };
 
 
