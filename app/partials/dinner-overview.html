@@ -21,13 +21,13 @@
                                 <img class='f-w' ng-src="{{dishInMenu.image}}">
                                 <div class='img-title text-center'>{{dishInMenu.title}}</div>
                                 </div>
-                            <div class='col-md-12 m-t-15 text-center dish-price-text'>{{(dishInMenu.pricePerServing * dinnerService.getNumberOfGuests()).toFixed(1)}} SEK</div>
+                            <div class='col-md-12 m-t-15 text-center dish-price-text'>{{(dishInMenu.pricePerServing * dinnerService.getNumberOfGuests()) | number : 2 }} SEK</div>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-4 dish-price-sum p-25">
                     <div class='p-t-300'>
-                        <p><b>Total: {{dinnerService.getTotalMenuPrice()}} SEK</b></p>
+                        <p><b>Total: {{dinnerService.getTotalMenuPrice() | number : 2 }} SEK</b></p>
                     </div>
                 </div>
             </div>
