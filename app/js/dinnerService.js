@@ -60,7 +60,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
         for (dishIndex in this.dishesInMenu) {
             totalPrice += this.getDishesPrice(this.dishesInMenu[dishIndex]);
         }
-        return totalPrice.toFixed(2);
+        return totalPrice;
     };
 
     this.getDishesPrice = function(dish){
@@ -79,7 +79,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
     };
 
 
-    //Updates the cookie with current dishes (ids) in the menu
     this.updateCookieStoreWithDishesInMenu = function () {
         var dishesInMenuIds = undefined;
         if(this.dishesInMenu.length > 0){
@@ -93,7 +92,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
     this.getDishesInMenuIdsFromCookieStore = function(){
         return $cookieStore.get('dishesInMenuIds');
-    };
+    }
 
 
     this.getDishFromMenu = function(id){
@@ -115,6 +114,11 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
         }
         this.dishesInMenu.splice(foundDishIndex, 1);
         this.updateCookieStoreWithDishesInMenu();
+    };
+
+
+    this.cloneObject = function(object){
+        return JSON.parse(JSON.stringify(object));
     };
 
     this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
