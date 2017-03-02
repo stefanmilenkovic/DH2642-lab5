@@ -31,7 +31,7 @@
                 <hr />
                 <ul class="p-0 description-ingredients-list">
                     <li ng-repeat="ingredient in dish.extendedIngredients" class='row'>
-                        <div class='col-md-2'>{{(ingredient.amount * dinnerService.getNumberOfGuests()).toFixed(1)}} {{ingredient.unit}}</div>
+                        <div class='col-md-2'>{{(ingredient.amount * dinnerService.getNumberOfGuests()) | number : 2}} {{ingredient.unit}}</div>
                         <div class='col-md-6'>{{ingredient.name}}</div>
                         <div class='col-md-2'>N/A</div>
                         <div class='col-md-2'>SEK</div>
@@ -42,7 +42,7 @@
                     <div class="col-md-4">
                         <button ng-click="addDishToMenu(dish)" class="btn btn-default f-w">Confirm dish</button>
                     </div>
-                    <div class="col-md-2 col-md-offset-4 description-dish-price">{{(dish.pricePerServing * dinnerService.getNumberOfGuests()).toFixed(2)}}</div>
+                    <div class="col-md-2 col-md-offset-4 description-dish-price">{{(dish.pricePerServing * dinnerService.getNumberOfGuests()) | number : 2}}</div>
                     <div class="col-md-2">SEK</div>
                 </div>
             </div>

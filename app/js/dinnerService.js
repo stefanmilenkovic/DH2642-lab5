@@ -64,7 +64,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
     };
 
     this.getDishesPrice = function(dish){
-        return parseFloat((dish.pricePerServing * this.getNumberOfGuests()).toFixed(2));
+        return parseFloat((dish.pricePerServing * this.getNumberOfGuests()));
     };
 
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu
