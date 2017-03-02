@@ -14,9 +14,12 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
       return $scope.dinnerService.getNumberOfGuests();
     };
 
+    //Checks the cookie with dishes in menu on startup, and in case there are any, adds them to the menu
     $scope.checkAndDownloadDishesFromCookies = function(){
         var dishesInMenuIds = $scope.dinnerService.getDishesInMenuIdsFromCookieStore();
+
         if(dishesInMenuIds != undefined && dishesInMenuIds.length != $scope.dinnerService.getFullMenu().length){
+
             console.log("Should download dishes from menu: "+dishesInMenuIds);
             angular.forEach(dishesInMenuIds, function(value, key){
                 console.log("Should retrieve: "+value);

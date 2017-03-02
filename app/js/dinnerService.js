@@ -79,6 +79,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
     };
 
 
+    //Updates the cookie with current dishes (ids) in the menu
     this.updateCookieStoreWithDishesInMenu = function () {
         var dishesInMenuIds = undefined;
         if(this.dishesInMenu.length > 0){
@@ -92,7 +93,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
     this.getDishesInMenuIdsFromCookieStore = function(){
         return $cookieStore.get('dishesInMenuIds');
-    }
+    };
 
 
     this.getDishFromMenu = function(id){
